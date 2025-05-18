@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    networks:
+      - practica-net
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: practica
+    ports:
+      - "3306:3306"
+    networks:
+      - practica-net
+
+networks:
+  practica-net:
+    driver: bridge
